@@ -15,12 +15,11 @@ public class Tiro extends Asset {
 
     private int poder;
 
-    public Tiro (int poder, int x, int y, int velocidade, Direcao direcao){
+    public Tiro(int x, int y, int velocidade, Direcao direcao, int poder) {
         super(x, y, velocidade, direcao);
         this.poder = poder;
 
-        String path = "images/laser/laser" + poder + ".png";
-        ImageView imagem = new ImageView(App.class.getResource(path).toString());
+        ImageView imagem = new ImageView(App.class.getResource("images/laser/laser" + poder + ".png").toString());
         setImagem(imagem);
     }
 

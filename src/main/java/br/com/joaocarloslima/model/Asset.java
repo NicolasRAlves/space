@@ -10,13 +10,30 @@ public abstract class Asset {
     private int velocidade;
     private Direcao direcao;
 
-    public void mover(){}
+    public Asset(int x, int y, int velocidade, Direcao direcao) {
+        this.x = x;
+        this.y = y;
+        this.velocidade = velocidade;
+        this.direcao = direcao;
+    }
 
-    public boolean colidiuCom(Asset asset){
+    public void mover() {
+        if (direcao == Direcao.CIMA) {
+            y = y - velocidade;
+        } else if (direcao == Direcao.BAIXO) {
+            y = y + velocidade;
+        } else if (direcao == Direcao.ESQUERDA) {
+            x = x - velocidade;
+        } else if (direcao == Direcao.DIREITA) {
+            x = x + velocidade;
+        }
+    }
+
+    public boolean colidiuCom(Asset asset) {
         return x < asset.getX() + 50 &&
-                x + 50 > asset.getX() &&
-                y < asset.getY() + 50 &&
-                y + 50 > asset.getY();
+               x + 50 > asset.getX() &&
+               y < asset.getY() + 50 &&
+               y + 50 > asset.getY();
     }
 
     public int getX() {
@@ -58,13 +75,4 @@ public abstract class Asset {
     public void setDirecao(Direcao direcao) {
         this.direcao = direcao;
     }
-
-    public Asset(int x, int y, int velocidade, Direcao direcao){
-        this.x = x;
-        this.y = y;
-        this.velocidade = velocidade;
-        this.direcao = direcao;
-
-    }
-
 }
